@@ -55,7 +55,7 @@ const Contact = () => {
             </div>
             <div className="contact-detail">
               <img src={location_icon} alt="" />
-              <p>Pune, India</p>
+              <p>India</p>
             </div>
           </div>
         </div>

@@ -19,13 +19,9 @@ const Services_Data = [
         s_name:"API Development & Integration",
         s_desc:"Designing robust REST APIs, third-party integrations, data modeling, and scalable microservices architecture."
     },
+    
     {
         s_no:"05",
-        s_name:"Mobile App Development",
-        s_desc:"Building cross-platform mobile applications with React Native and modern UI frameworks."
-    },
-    {
-        s_no:"06",
         s_name:"UI/UX Design",
         s_desc:"Designing clean and user-friendly interfaces with strong focus on usability, visual hierarchy, and modern design trends."
     }

@@ -22,7 +22,7 @@ const Hero = () => {
 
             <div className="hero-resume">
   <a 
-    href="/Rohit_Kumar(resume).pdf" 
+    href="/Rohit_Kumar.pdf" 
     target="_blank" 
     rel="noopener noreferrer"
   >

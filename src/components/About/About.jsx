@@ -3,21 +3,25 @@ import profile_img from '../../assets/prop124.png';
 import './About.css';
 
 const SKILLS = [
-  { name: 'React.js', pct: 90, color: '#61dafb' },
-  { name: 'JavaScript', pct: 88, color: '#f7df1e' },
-  { name: 'Node.js', pct: 80, color: '#68a063' },
-  { name: 'HTML & CSS', pct: 92, color: '#e34c26' },
-  { name: 'MongoDB', pct: 75, color: '#47a248' },
-  { name: 'Git & GitHub', pct: 82, color: '#f05032' },
+  { name: 'React.js / Next.js',   pct: 92, color: '#61dafb' },
+  { name: 'JavaScript / TypeScript', pct: 88, color: '#f7df1e' },
+  { name: 'Node.js / Express.js',  pct: 82, color: '#68a063' },
+  { name: 'MongoDB / MySQL',       pct: 78, color: '#47a248' },
+  { name: 'Socket.io / REST APIs', pct: 80, color: '#8b5cf6' },
+  { name: 'Git / Docker / AWS',    pct: 75, color: '#f05032' },
 ];
 
 const STATS = [
-  { value: 2, suffix: '+', label: 'Years Experience' },
   { value: 15, suffix: '+', label: 'Projects Shipped' },
-  { value: 10, suffix: '+', label: 'Hackathon Wins' },
+  { value: 400, suffix: '+', label: 'DSA Problems Solved' },
+  { value: 5,  suffix: '+', label: 'Hackathon Finalist' },
 ];
 
-const TECH = ['⚛️ React', '🟢 Node', '🍃 MongoDB', '🚀 Express', '🐙 Git', '☁️ Vercel'];
+const TECH = [
+  '⚛️ React', '▲ Next.js', '⚡ JavaScript', '🔷 TypeScript',
+  '🟢 Node.js', '🍃 MongoDB', '🗄️ MySQL', '🔗 Socket.io',
+  '🐙 GitHub', '☁️ AWS EC2', '🐳 Docker', '🚀 Vercel',
+];
 
 const useCountUp = (target, started) => {
   const [count, setCount] = useState(0);
@@ -59,7 +63,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="about" ref={sectionRef}>
+    <section id="about" className="about" ref={sectionRef} data-num="01">
       {/* Background gradient */}
       <div className="about__bg-glow" aria-hidden="true" />
 
@@ -92,14 +96,15 @@ const About = () => {
           <div className="about__content-col">
             <div className="about__bio">
               <p>
-                I'm a <strong>Software Engineer</strong> from Bhopal, India, passionate about building
-                fast, scalable, and visually stunning web applications. My expertise spans the
-                full MERN stack — from crafting pixel-perfect UIs to architecting robust backends.
+                I'm a <strong>Full-Stack Developer</strong> from Bhopal, India, and a
+                <strong> B.Tech CSE student</strong> at Oriental Institute Of Science &amp; Technology (2023–2027).
+                I recently interned as a <strong>Software Developer at SustainableBhava, New Delhi</strong>,
+                where I built reusable React components that reduced development effort by 30%.
               </p>
               <p>
-                I thrive at the intersection of clean code and great design. Whether it's a
-                real-time chat app, a science education platform, or an e-commerce system —
-                I bring the same level of craft and dedication to every project.
+                I specialise in the <strong>MERN stack</strong> — building real-time apps, AI-powered platforms,
+                and scalable REST APIs. I've solved <strong>400+ DSA problems</strong> on LeetCode
+                and reached the finals of <strong>5+ national hackathons</strong> among 1000+ participants.
               </p>
             </div>
 

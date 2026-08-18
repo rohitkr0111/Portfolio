@@ -3,3 +3,75 @@
   min-height: 100vh;
   position: relative;
 }
+
+/* =========================================================
+   SECTION NUMBER WATERMARKS
+   Large faint numbers behind each section title — 01, 02, 03…
+   Applied via data-section-num attribute on section elements.
+   ========================================================= */
+.about::before,
+.services::before,
+.work::before,
+.contact::before {
+  content: attr(data-num);
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(6rem, 14vw, 12rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -6px;
+  color: rgba(139, 92, 246, 0.04);
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+[data-theme="light"] .about::before,
+[data-theme="light"] .services::before,
+[data-theme="light"] .work::before,
+[data-theme="light"] .contact::before {
+  color: rgba(139, 92, 246, 0.06);
+}
+
+/* =========================================================
+   SECTION ENTRY ANIMATION — slide up words
+   Apply .reveal-wrap + .reveal-word to any heading for the
+   split-word slide-up effect seen on Awwwards sites.
+   ========================================================= */
+.reveal-wrap {
+  overflow: hidden;
+  display: inline-block;
+}
+.reveal-word {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity    0.7s ease;
+}
+.reveal-word--visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* =========================================================
+   MAGNETIC BUTTON EFFECT
+   .magnetic class — JS applies transform, CSS handles reset
+   ========================================================= */
+.magnetic {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+/* =========================================================
+   HORIZONTAL RULE — gradient divider utility
+   ========================================================= */
+.gradient-hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent);
+  margin: 0;
+}

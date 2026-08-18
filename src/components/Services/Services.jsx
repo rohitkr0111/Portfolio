@@ -18,7 +18,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="services" ref={sectionRef}>
+    <section id="services" className="services" ref={sectionRef} data-num="02">
       <div className="services__bg-glow" aria-hidden="true" />
 
       <div className={`services__inner ${visible ? 'services__inner--visible' : ''}`}>

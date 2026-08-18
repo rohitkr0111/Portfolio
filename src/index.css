@@ -35,11 +35,39 @@
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
+/* ===== LIGHT THEME TOKENS ===== */
+[data-theme="light"] {
+  --bg-primary:       #f0f4ff;
+  --bg-secondary:     #ffffff;
+  --bg-card:          rgba(255, 255, 255, 0.75);
+  --bg-card-hover:    rgba(255, 255, 255, 0.95);
+  --glass-border:     rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(139, 92, 246, 0.45);
+
+  --text-primary:     #0f172a;
+  --text-secondary:   #475569;
+  --text-muted:       #94a3b8;
+
+  --shadow-glow:      0 0 40px rgba(139, 92, 246, 0.12);
+  --shadow-glow-strong: 0 0 60px rgba(139, 92, 246, 0.25);
+  --shadow-card:      0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
 /* ===== RESET ===== */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* ===== SMOOTH THEME TRANSITIONS ===== */
+*, *::before, *::after {
+  transition:
+    background-color 0.35s ease,
+    background     0.35s ease,
+    border-color   0.35s ease,
+    color          0.35s ease,
+    box-shadow     0.35s ease;
 }
 
 html {

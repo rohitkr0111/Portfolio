@@ -49,7 +49,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact" ref={sectionRef}>
+    <section id="contact" className="contact" ref={sectionRef} data-num="04">
       <div className="contact__bg-glow" aria-hidden="true" />
 
       {/* Toast notification */}

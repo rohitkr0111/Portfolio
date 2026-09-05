@@ -3,12 +3,12 @@ import profile_img from '../../assets/prop124.png';
 import './About.css';
 
 const SKILLS = [
-  { name: 'React.js / Next.js',   pct: 92, color: '#61dafb' },
-  { name: 'JavaScript / TypeScript', pct: 88, color: '#f7df1e' },
-  { name: 'Node.js / Express.js',  pct: 82, color: '#68a063' },
-  { name: 'MongoDB / MySQL',       pct: 78, color: '#47a248' },
-  { name: 'Socket.io / REST APIs', pct: 80, color: '#8b5cf6' },
-  { name: 'Git / Docker / AWS',    pct: 75, color: '#f05032' },
+  { name: 'React.js / Next.js',      pct: 92, color: '#c9a96e' },
+  { name: 'JavaScript / TypeScript', pct: 88, color: '#e8d5b7' },
+  { name: 'Node.js / Express.js',    pct: 82, color: '#b8935a' },
+  { name: 'MongoDB / MySQL',         pct: 78, color: '#a07040' },
+  { name: 'Socket.io / REST APIs',   pct: 80, color: '#d4a574' },
+  { name: 'Git / Docker / AWS',      pct: 75, color: '#8b6834' },
 ];
 
 const STATS = [

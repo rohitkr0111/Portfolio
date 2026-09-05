@@ -5,9 +5,7 @@
 }
 
 /* =========================================================
-   SECTION NUMBER WATERMARKS
-   Large faint numbers behind each section title — 01, 02, 03…
-   Applied via data-section-num attribute on section elements.
+   SECTION NUMBER WATERMARKS — Gold
    ========================================================= */
 .about::before,
 .services::before,
@@ -23,7 +21,7 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: -6px;
-  color: rgba(139, 92, 246, 0.04);
+  color: rgba(201, 169, 110, 0.035);
   pointer-events: none;
   z-index: 0;
   white-space: nowrap;
@@ -34,13 +32,11 @@
 [data-theme="light"] .services::before,
 [data-theme="light"] .work::before,
 [data-theme="light"] .contact::before {
-  color: rgba(139, 92, 246, 0.06);
+  color: rgba(160, 112, 64, 0.06);
 }
 
 /* =========================================================
-   SECTION ENTRY ANIMATION — slide up words
-   Apply .reveal-wrap + .reveal-word to any heading for the
-   split-word slide-up effect seen on Awwwards sites.
+   REVEAL ANIMATION — Awwwards-style slide-up words
    ========================================================= */
 .reveal-wrap {
   overflow: hidden;
@@ -59,19 +55,18 @@
 }
 
 /* =========================================================
-   MAGNETIC BUTTON EFFECT
-   .magnetic class — JS applies transform, CSS handles reset
+   MAGNETIC BUTTON
    ========================================================= */
 .magnetic {
   transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
 }
 
 /* =========================================================
-   HORIZONTAL RULE — gradient divider utility
+   GRADIENT DIVIDER
    ========================================================= */
 .gradient-hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(201,169,110,0.35), rgba(232,213,183,0.25), transparent);
   margin: 0;
 }

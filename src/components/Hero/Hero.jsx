@@ -10,7 +10,6 @@ const ROLES = [
   'UI/UX Craftsman',
 ];
 
-/* Floating skill bubbles — label, size, start pos, drift speed */
 const SKILL_BUBBLES = [
   { label: 'React',       size: 'lg', x: 8,  y: 18, dur: 14, delay: 0   },
   { label: 'Node.js',     size: 'md', x: 82, y: 12, dur: 17, delay: 2   },
@@ -56,7 +55,7 @@ const Hero = ({ onOpenResume }) => {
     return () => clearTimeout(timeout);
   }, [displayed, deleting, roleIndex]);
 
-  /* particle canvas */
+  /* particle canvas — warm gold tones */
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -75,13 +74,18 @@ const Hero = ({ onOpenResume }) => {
       reset() {
         this.x     = Math.random() * canvas.width;
         this.y     = Math.random() * canvas.height;
-        this.r     = Math.random() * 1.4 + 0.3;
-        this.vx    = (Math.random() - 0.5) * 0.25;
-        this.vy    = (Math.random() - 0.5) * 0.25;
-        this.alpha = Math.random() * 0.4 + 0.08;
-        this.color = Math.random() > 0.5
-          ? `rgba(139,92,246,${this.alpha})`
-          : `rgba(6,182,212,${this.alpha})`;
+        this.r     = Math.random() * 1.2 + 0.2;
+        this.vx    = (Math.random() - 0.5) * 0.2;
+        this.vy    = (Math.random() - 0.5) * 0.2;
+        this.alpha = Math.random() * 0.35 + 0.05;
+        const which = Math.random();
+        if (which > 0.65) {
+          this.color = `rgba(201,169,110,${this.alpha})`;
+        } else if (which > 0.35) {
+          this.color = `rgba(232,213,183,${this.alpha * 0.7})`;
+        } else {
+          this.color = `rgba(160,112,64,${this.alpha * 0.8})`;
+        }
       }
       update() {
         this.x += this.vx;
@@ -97,7 +101,7 @@ const Hero = ({ onOpenResume }) => {
       }
     }
 
-    const particles = Array.from({ length: 100 }, () => new Particle());
+    const particles = Array.from({ length: 80 }, () => new Particle());
 
     const drawLines = () => {
       for (let i = 0; i < particles.length; i++) {
@@ -105,10 +109,10 @@ const Hero = ({ onOpenResume }) => {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const d  = Math.sqrt(dx * dx + dy * dy);
-          if (d < 90) {
+          if (d < 80) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(139,92,246,${0.1 * (1 - d / 90)})`;
-            ctx.lineWidth   = 0.4;
+            ctx.strokeStyle = `rgba(201,169,110,${0.08 * (1 - d / 80)})`;
+            ctx.lineWidth   = 0.3;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -139,18 +143,19 @@ const Hero = ({ onOpenResume }) => {
       {/* ambient glow orbs */}
       <div className="hero__orb hero__orb--1" aria-hidden="true" />
       <div className="hero__orb hero__orb--2" aria-hidden="true" />
+      <div className="hero__orb hero__orb--3" aria-hidden="true" />
 
-      {/* ── Floating skill bubbles ── */}
+      {/* Floating skill bubbles */}
       <div className="hero__bubbles" aria-hidden="true">
         {SKILL_BUBBLES.map((b, i) => (
           <span
             key={i}
             className={`hero__bubble hero__bubble--${b.size}`}
             style={{
-              left:            `${b.x}%`,
-              top:             `${b.y}%`,
+              left:             `${b.x}%`,
+              top:              `${b.y}%`,
               animationDuration:`${b.dur}s`,
-              animationDelay:  `${b.delay}s`,
+              animationDelay:   `${b.delay}s`,
             }}
           >
             {b.label}
@@ -158,10 +163,10 @@ const Hero = ({ onOpenResume }) => {
         ))}
       </div>
 
-      {/* ── Main content ── */}
+      {/* Main content */}
       <div className={`hero__content ${visible ? 'hero__content--visible' : ''}`}>
 
-        {/* Profile — clean, no ring, no border background */}
+        {/* Profile image */}
         <div className="hero__avatar-wrap">
           <img src={profile_img} alt="Rohit Kumar" className="hero__avatar" />
           <div className="hero__avatar-shadow" aria-hidden="true" />

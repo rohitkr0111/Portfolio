@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   z-index: 9000;
-  background: rgba(5, 11, 24, 0.85);
+  background: rgba(8, 8, 14, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: flex;
@@ -12,7 +12,6 @@
   padding: 20px;
   animation: overlayIn 0.3s ease;
 }
-
 @keyframes overlayIn {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -24,19 +23,18 @@
   max-width: 900px;
   height: 90vh;
   max-height: 1000px;
-  background: rgba(10, 22, 40, 0.97);
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  background: rgba(10, 10, 16, 0.97);
+  border: 1px solid rgba(201, 169, 110, 0.2);
   border-radius: 24px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.04),
-    0 40px 80px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(139, 92, 246, 0.15);
+    0 0 0 1px rgba(201, 169, 110, 0.05),
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(201, 169, 110, 0.1);
   animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-
 @keyframes modalIn {
   from { opacity: 0; transform: scale(0.93) translateY(20px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
@@ -48,38 +46,30 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+  background: rgba(201, 169, 110, 0.02);
   flex-shrink: 0;
   gap: 12px;
 }
-
 .resume-modal__toolbar-left {
   display: flex;
   align-items: center;
   gap: 14px;
   min-width: 0;
 }
-
-.resume-modal__icon {
-  font-size: 1.6rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
+.resume-modal__icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
 .resume-modal__title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #f5ead8;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .resume-modal__subtitle {
   font-size: 0.72rem;
-  color: #64748b;
+  color: #6b5b45;
   font-weight: 500;
   margin-top: 2px;
 }
@@ -108,26 +98,31 @@
   white-space: nowrap;
   border: 1px solid transparent;
 }
-
 .resume-modal__btn--download {
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  color: #fff;
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  background: linear-gradient(135deg, #c9a96e, #e8d5b7, #a07040);
+  background-size: 200% auto;
+  color: #0a0a0f;
+  box-shadow: 0 0 20px rgba(201, 169, 110, 0.25);
+  animation: ctaGradient 4s ease infinite;
+}
+@keyframes ctaGradient {
+  0%   { background-position: 0% center; }
+  50%  { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 .resume-modal__btn--download:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 6px 24px rgba(201, 169, 110, 0.4);
 }
-
 .resume-modal__btn--open {
-  background: rgba(255, 255, 255, 0.05);
-  color: #94a3b8;
-  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(201, 169, 110, 0.05);
+  color: #a09070;
+  border-color: rgba(201, 169, 110, 0.12);
 }
 .resume-modal__btn--open:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #f1f5f9;
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(201, 169, 110, 0.1);
+  color: #c9a96e;
+  border-color: rgba(201, 169, 110, 0.25);
   transform: translateY(-2px);
 }
 
@@ -136,9 +131,9 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #64748b;
+  background: rgba(201, 169, 110, 0.05);
+  border: 1px solid rgba(201, 169, 110, 0.1);
+  color: #6b5b45;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -158,9 +153,8 @@
   flex: 1;
   overflow: hidden;
   position: relative;
-  background: #1e2a3a;
+  background: #131320;
 }
-
 .resume-modal__iframe {
   width: 100%;
   height: 100%;
@@ -177,7 +171,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  color: #94a3b8;
+  color: #a09070;
   text-align: center;
   padding: 40px;
 }
@@ -187,13 +181,8 @@
   .resume-modal__overlay { padding: 12px; }
   .resume-modal { border-radius: 16px; height: 95vh; }
   .resume-modal__toolbar { padding: 12px 14px; }
-
   .resume-modal__btn--open span:last-child,
   .resume-modal__subtitle { display: none; }
-
-  .resume-modal__btn {
-    padding: 8px 12px;
-    font-size: 0.75rem;
-  }
+  .resume-modal__btn { padding: 8px 12px; font-size: 0.75rem; }
   .resume-modal__btn svg { margin-right: -2px; }
 }

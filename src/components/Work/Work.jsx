@@ -70,9 +70,9 @@ const useTilt = () => {
         scale3d(1.04, 1.04, 1.04)
       `;
       card.style.boxShadow = `
-        ${shadowX}px ${shadowY + 20}px 60px rgba(0,0,0,0.5),
-        0 0 40px rgba(139,92,246,0.15),
-        inset 0 0 0 1px rgba(139,92,246,0.2)
+        ${shadowX}px ${shadowY + 20}px 60px rgba(0,0,0,0.6),
+        0 0 40px rgba(201,169,110,0.12),
+        inset 0 0 0 1px rgba(201,169,110,0.15)
       `;
       card.style.transition = 'transform 0.08s linear, box-shadow 0.08s linear';
 

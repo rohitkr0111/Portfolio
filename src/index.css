@@ -72,6 +72,7 @@
 }
 
 /* ===== SMOOTH THEME TRANSITIONS ===== */
+/* Only transition theme-related properties — NOT opacity/transform (those are used for entry animations) */
 *, *::before, *::after {
   transition:
     background-color 0.35s ease,

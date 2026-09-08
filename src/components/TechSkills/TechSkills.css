@@ -1,0 +1,246 @@
+/* ===== TECH SKILLS SECTION ===== */
+.techskills {
+  position: relative;
+  padding: 100px 60px;
+  overflow: hidden;
+}
+
+.techskills__bg-glow {
+  position: absolute;
+  top: 10%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201, 169, 110, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== ENTRANCE ANIMATION ===== */
+.techskills__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.techskills__inner--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== FILTER TABS ===== */
+.techskills__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.techskills__tab {
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(201, 169, 110, 0.18);
+  background: rgba(201, 169, 110, 0.04);
+  color: #a09070;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+.techskills__tab:hover {
+  border-color: rgba(201, 169, 110, 0.4);
+  color: #c9a96e;
+  background: rgba(201, 169, 110, 0.08);
+}
+.techskills__tab--active {
+  border-color: #c9a96e;
+  background: rgba(201, 169, 110, 0.12);
+  color: #c9a96e;
+  box-shadow: 0 0 20px rgba(201, 169, 110, 0.15);
+}
+
+/* ===== CATEGORIES ===== */
+.techskills__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.techskills__category {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: none;
+}
+
+.techskills__inner--visible .techskills__category {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.techskills__category-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e8d5b7;
+  letter-spacing: 0.5px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+}
+
+.techskills__category-emoji {
+  font-size: 1.1rem;
+}
+
+/* ===== TECH GRID ===== */
+.techskills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+}
+
+/* ===== TECH CARD ===== */
+.techskills__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(201, 169, 110, 0.1);
+  background: rgba(201, 169, 110, 0.03);
+  cursor: default;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(16px) scale(0.95);
+}
+
+.techskills__inner--visible .techskills__card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease,
+    background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.techskills__card:hover {
+  border-color: rgba(201, 169, 110, 0.35);
+  background: rgba(201, 169, 110, 0.08);
+  transform: translateY(-6px) scale(1.04);
+  box-shadow:
+    0 12px 40px rgba(201, 169, 110, 0.12),
+    0 0 0 1px rgba(201, 169, 110, 0.1);
+}
+
+/* ===== ICON ===== */
+.techskills__icon-wrap {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.techskills__icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.techskills__card:hover .techskills__icon {
+  transform: scale(1.1) rotate(-4deg);
+  filter: drop-shadow(0 4px 16px rgba(201, 169, 110, 0.25));
+}
+
+/* Fallback letter when icon fails to load */
+.techskills__icon-fallback {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(201, 169, 110, 0.12);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  color: #c9a96e;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== NAME LABEL ===== */
+.techskills__name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #8a7a62;
+  text-align: center;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.techskills__card:hover .techskills__name {
+  color: #c9a96e;
+}
+
+/* ===== LIGHT THEME ===== */
+[data-theme="light"] .techskills { background: var(--bg-primary); }
+[data-theme="light"] .techskills__tab {
+  background: rgba(201, 169, 110, 0.05);
+  border-color: rgba(160, 112, 64, 0.12);
+  color: #7a6348;
+}
+[data-theme="light"] .techskills__tab:hover {
+  background: rgba(201, 169, 110, 0.1);
+  border-color: rgba(160, 112, 64, 0.3);
+  color: #a07040;
+}
+[data-theme="light"] .techskills__tab--active {
+  border-color: #a07040;
+  background: rgba(160, 112, 64, 0.1);
+  color: #a07040;
+}
+[data-theme="light"] .techskills__category-title { color: #1a1208; }
+[data-theme="light"] .techskills__category-title { border-color: rgba(160, 112, 64, 0.1); }
+[data-theme="light"] .techskills__card {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(160, 112, 64, 0.1);
+  box-shadow: 0 4px 20px rgba(100, 70, 20, 0.06);
+}
+[data-theme="light"] .techskills__card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(201, 169, 110, 0.4);
+  box-shadow: 0 12px 40px rgba(100, 70, 20, 0.1);
+}
+[data-theme="light"] .techskills__name { color: #8a7a62; }
+[data-theme="light"] .techskills__card:hover .techskills__name { color: #a07040; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .techskills { padding: 80px 40px; }
+  .techskills__grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .techskills { padding: 60px 24px; }
+  .techskills__grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 12px; }
+  .techskills__card { padding: 16px 8px; }
+  .techskills__icon, .techskills__icon-wrap { width: 40px; height: 40px; }
+  .techskills__tabs { gap: 8px; }
+  .techskills__tab { padding: 6px 14px; font-size: 0.76rem; }
+}

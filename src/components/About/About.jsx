@@ -2,25 +2,108 @@ import { useEffect, useRef, useState } from 'react';
 import profile_img from '../../assets/prop124.png';
 import './About.css';
 
-const SKILLS = [
-  { name: 'React.js / Next.js',      pct: 92, color: '#c9a96e' },
-  { name: 'JavaScript / TypeScript', pct: 88, color: '#e8d5b7' },
-  { name: 'Node.js / Express.js',    pct: 82, color: '#b8935a' },
-  { name: 'MongoDB / MySQL',         pct: 78, color: '#a07040' },
-  { name: 'Socket.io / REST APIs',   pct: 80, color: '#d4a574' },
-  { name: 'Git / Docker / AWS',      pct: 75, color: '#8b6834' },
-];
+const LEETCODE_USERNAME = 'rohitsinghrajput0111';
+
+/* ── Fetch LeetCode stats from public API proxy ── */
+const useLeetCode = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USERNAME}/solved`)
+      .then(r => r.json())
+      .then(json => {
+        setData({
+          total:  json.solvedProblem  ?? 0,
+          easy:   json.easySolved     ?? 0,
+          medium: json.mediumSolved   ?? 0,
+          hard:   json.hardSolved     ?? 0,
+        });
+      })
+      .catch(() => setData(null))
+      .finally(() => setLoading(false));
+  }, []);
+
+  return { data, loading };
+};
+
+const LeetCodeStats = () => {
+  const { data, loading } = useLeetCode();
+
+  const LEVELS = [
+    { label: 'Easy',   key: 'easy',   color: '#68d391', bg: 'rgba(104,211,145,0.08)', border: 'rgba(104,211,145,0.25)' },
+    { label: 'Medium', key: 'medium', color: '#f6ad55', bg: 'rgba(246,173,85,0.08)',  border: 'rgba(246,173,85,0.25)'  },
+    { label: 'Hard',   key: 'hard',   color: '#fc8181', bg: 'rgba(252,129,129,0.08)', border: 'rgba(252,129,129,0.25)' },
+  ];
+
+  return (
+    <div className="about__github">
+      <h3 className="about__github-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+        </svg>
+        LeetCode Stats
+      </h3>
+
+      <a
+        href={`https://leetcode.com/u/${LEETCODE_USERNAME}/`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="about__lc-card"
+      >
+        {loading ? (
+          /* Loading skeleton */
+          <div className="about__lc-skeleton">
+            <div className="about__lc-sk-circle" />
+            <div className="about__lc-sk-lines">
+              <div className="about__lc-sk-line about__lc-sk-line--wide" />
+              <div className="about__lc-sk-line about__lc-sk-line--short" />
+            </div>
+          </div>
+        ) : data ? (
+          <div className="about__lc-content">
+            {/* Total solved big number */}
+            <div className="about__lc-total">
+              <span className="about__lc-total-num">{data.total}</span>
+              <span className="about__lc-total-label">Solved</span>
+            </div>
+
+            {/* Divider */}
+            <div className="about__lc-divider" />
+
+            {/* Easy / Medium / Hard breakdown */}
+            <div className="about__lc-breakdown">
+              {LEVELS.map(({ label, key, color, bg, border }) => (
+                <div
+                  key={key}
+                  className="about__lc-level"
+                  style={{ '--lc-color': color, '--lc-bg': bg, '--lc-border': border }}
+                >
+                  <span className="about__lc-level-count">{data[key]}</span>
+                  <span className="about__lc-level-label">{label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Verify link */}
+            <span className="about__lc-verify">View Profile ↗</span>
+          </div>
+        ) : (
+          /* Fallback if API is down */
+          <div className="about__lc-fallback">
+            <span className="about__lc-fallback-num">400+</span>
+            <span className="about__lc-fallback-text">Problems Solved · View on LeetCode ↗</span>
+          </div>
+        )}
+      </a>
+    </div>
+  );
+};
 
 const STATS = [
   { value: 15, suffix: '+', label: 'Projects Shipped' },
-  { value: 400, suffix: '+', label: 'DSA Problems Solved' },
-  { value: 5,  suffix: '+', label: 'Hackathon Finalist' },
-];
-
-const TECH = [
-  '⚛️ React', '▲ Next.js', '⚡ JavaScript', '🔷 TypeScript',
-  '🟢 Node.js', '🍃 MongoDB', '🗄️ MySQL', '🔗 Socket.io',
-  '🐙 GitHub', '☁️ AWS EC2', '🐳 Docker', '🚀 Vercel',
+  { value: 400, suffix: '+', label: 'DSA on LeetCode' },
+  { value: 5,  suffix: '+', label: 'Hackathon Finals' },
 ];
 
 const useCountUp = (target, started) => {
@@ -72,7 +155,7 @@ const About = () => {
         <div className="section-title">
           <span className="section-pill">About Me</span>
           <h2>Who I Am</h2>
-          <p>A passionate Full-Stack Developer turning ideas into elegant digital experiences.</p>
+          <p>4th-year CS student, MERN developer, occasional hackathon finalist.</p>
         </div>
 
         {/* Main content grid */}
@@ -83,52 +166,28 @@ const About = () => {
               <img src={profile_img} alt="Rohit Kumar" className="about__photo" />
               <div className="about__image-decoration" aria-hidden="true" />
             </div>
-
-            {/* Tech stack pills */}
-            <div className="about__tech-grid">
-              {TECH.map((t) => (
-                <span key={t} className="about__tech-pill">{t}</span>
-              ))}
-            </div>
           </div>
 
           {/* Content column */}
           <div className="about__content-col">
             <div className="about__bio">
               <p>
-                I'm a <strong>Full-Stack Developer</strong> from Bhopal, India, and a
-                <strong> B.Tech CSE student</strong> at Oriental Institute Of Science &amp; Technology (2023–2027).
-                I recently interned as a <strong>Software Developer at SustainableBhava, New Delhi</strong>,
-                where I built reusable React components that reduced development effort by 30%.
+                Hey, I'm <strong>Rohit</strong> — a <strong>B.Tech CSE student</strong> from Bhopal
+                (Oriental Institute of Science &amp; Technology, batch of 2027).
+                I got into web dev properly in my first year, broke everything,
+                then gradually figured it out.
               </p>
               <p>
-                I specialise in the <strong>MERN stack</strong> — building real-time apps, AI-powered platforms,
-                and scalable REST APIs. I've solved <strong>400+ DSA problems</strong> on LeetCode
-                and reached the finals of <strong>5+ national hackathons</strong> among 1000+ participants.
+                I interned at <strong>SustainableBhava, New Delhi</strong> as a Software Developer,
+                where I shipped reusable React components that genuinely cut dev time by ~30%
+                — a number that surprised even me when we measured it.
               </p>
-            </div>
-
-            {/* Skill bars */}
-            <div className="about__skills">
-              {SKILLS.map((skill, i) => (
-                <div key={skill.name} className="about__skill-row">
-                  <div className="about__skill-header">
-                    <span className="about__skill-name">{skill.name}</span>
-                    <span className="about__skill-pct">{visible ? skill.pct : 0}%</span>
-                  </div>
-                  <div className="about__skill-track">
-                    <div
-                      className="about__skill-bar"
-                      style={{
-                        width: visible ? `${skill.pct}%` : '0%',
-                        background: `linear-gradient(90deg, ${skill.color}88, ${skill.color})`,
-                        boxShadow: `0 0 12px ${skill.color}55`,
-                        transitionDelay: `${i * 100}ms`,
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
+              <p>
+                My go-to stack is <strong>MERN</strong>, but lately I've been deep into
+                AI integrations — Gemini API shows up in 3 of my last 4 projects.
+                Outside of coding, I'm either grinding LeetCode (400+ problems and counting)
+                or debugging something at 2am for a hackathon I probably shouldn't have signed up for.
+              </p>
             </div>
 
             {/* CTA */}
@@ -149,6 +208,37 @@ const About = () => {
             <StatCard key={stat.label} stat={stat} started={visible} />
           ))}
         </div>
+
+        {/* GitHub Activity */}
+        <div className="about__github">
+          <h3 className="about__github-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub Activity
+          </h3>
+
+          {/* Contribution heatmap — gold tinted to match theme */}
+          <a
+            href="https://github.com/rohitkr0111"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="about__github-graph-link"
+            title="View GitHub profile"
+          >
+            <img
+              src="https://ghchart.rshah.org/c9a96e/rohitkr0111"
+              alt="Rohit Kumar's GitHub contribution graph"
+              className="about__github-graph"
+              loading="lazy"
+            />
+          </a>
+
+          {/* Stats cards row */}
+          
+        </div>
+
+        <LeetCodeStats />
       </div>
     </section>
   );

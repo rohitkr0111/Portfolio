@@ -49,7 +49,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact" ref={sectionRef} data-num="04">
+    <section id="contact" className="contact" ref={sectionRef} data-num="07">
       <div className="contact__bg-glow" aria-hidden="true" />
 
       {/* Toast notification */}
@@ -60,19 +60,19 @@ const Contact = () => {
       <div className={`contact__inner ${visible ? 'contact__inner--visible' : ''}`}>
         <div className="section-title">
           <span className="section-pill">Contact</span>
-          <h2>Get In Touch</h2>
-          <p>Have a project in mind or just want to say hi? My inbox is always open.</p>
+          <h2>Let's Talk</h2>
+          <p>Whether it's a job, a collab, or just "hey I like your work" — I read every message.</p>
         </div>
 
         <div className="contact__grid">
           {/* Left: info */}
           <div className="contact__info-col">
             <div className="contact__info-card">
-              <h3 className="contact__info-heading">Let's Talk</h3>
+              <h3 className="contact__info-heading">Hit me up</h3>
               <p className="contact__info-desc">
-                I'm currently open to new opportunities and collaborations.
-                Whether it's a freelance project, a full-time role, or just
-                a technical conversation — let's connect!
+                I'm actively looking for SDE internships and full-time roles.
+                Got a project that needs a developer? A question about my work?
+                Or just want to say hi? I'm usually pretty quick to reply.
               </p>
               <div className="contact__details">
                 {CONTACT_INFO.map(({ icon, label, value, href }) => (
@@ -97,7 +97,7 @@ const Contact = () => {
                 <a href="https://www.linkedin.com/in/rohitkumarsingh0111/" target="_blank" rel="noopener noreferrer" className="contact__social-btn">
                   LinkedIn ↗
                 </a>
-                <a href="https://github.com/rohitkumarsingh0111" target="_blank" rel="noopener noreferrer" className="contact__social-btn">
+                <a href="https://github.com/rohitkr0111" target="_blank" rel="noopener noreferrer" className="contact__social-btn">
                   GitHub ↗
                 </a>
               </div>

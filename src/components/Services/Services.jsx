@@ -18,14 +18,14 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="services" ref={sectionRef} data-num="02">
+    <section id="services" className="services" ref={sectionRef} data-num="04">
       <div className="services__bg-glow" aria-hidden="true" />
 
       <div className={`services__inner ${visible ? 'services__inner--visible' : ''}`}>
         <div className="section-title">
           <span className="section-pill">What I Do</span>
           <h2>My Services</h2>
-          <p>End-to-end solutions from concept to deployment — built to perform and scale.</p>
+          <p>Things I'm actually good at — not just things that look good on a resume.</p>
         </div>
 
         <div className="services__grid">

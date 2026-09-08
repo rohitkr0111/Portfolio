@@ -5,9 +5,9 @@ import './Hero.css';
 
 const ROLES = [
   'Full-Stack Developer',
-  'MERN Stack Engineer',
-  'React Enthusiast',
-  'UI/UX Craftsman',
+  'MERN + AI Builder',
+  'Open Source Enthusiast',
+  'Always Shipping 🚀',
 ];
 
 const SKILL_BUBBLES = [
@@ -25,7 +25,7 @@ const SKILL_BUBBLES = [
   { label: 'HTML & CSS',  size: 'sm', x: 48, y: 92, dur: 16, delay: 4   },
 ];
 
-const Hero = ({ onOpenResume }) => {
+const Hero = () => {
   const canvasRef  = useRef(null);
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState('');
@@ -192,14 +192,14 @@ const Hero = ({ onOpenResume }) => {
 
         {/* tagline */}
         <p className="hero__tagline">
-          Crafting high-performance web experiences with the MERN stack.
+          Building production-ready MERN &amp; AI-powered web apps.
           <br />
-          Based in <strong>India</strong> · 15+ projects shipped · 10+ hackathon wins
+          Based in <strong>India</strong> · 15+ projects · 5+ hackathon finals · 400+ DSA solved
         </p>
 
         {/* tech badges */}
         <div className="hero__tech-badges">
-          {['React', 'Node.js', 'MongoDB', 'Express', 'JavaScript'].map(t => (
+          {['React', 'Node.js', 'MongoDB', 'TypeScript', 'Gemini AI'].map(t => (
             <span key={t} className="hero__tech-badge">{t}</span>
           ))}
         </div>
@@ -209,9 +209,14 @@ const Hero = ({ onOpenResume }) => {
           <AnchorLink href="#contact" offset={70} className="hero__btn hero__btn--primary">
             Let's Connect →
           </AnchorLink>
-          <button onClick={onOpenResume} className="hero__btn hero__btn--secondary">
+          <a
+            href="/Rohit_Kumar.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero__btn hero__btn--secondary"
+          >
             View Resume ↗
-          </button>
+          </a>
         </div>
       </div>
 

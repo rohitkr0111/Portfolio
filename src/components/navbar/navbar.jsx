@@ -5,14 +5,17 @@ import { useTheme } from '../../context/ThemeContext';
 import './navbar.css';
 
 const NAV_ITEMS = [
-  { id: 'home',     label: 'Home' },
-  { id: 'about',    label: 'About' },
-  { id: 'services', label: 'Services' },
-  { id: 'work',     label: 'Portfolio' },
-  { id: 'contact',  label: 'Contact' },
+  { id: 'home',           label: 'Home' },
+  { id: 'about',          label: 'About' },
+  { id: 'experience',     label: 'Experience' },
+  { id: 'skills',         label: 'Skills' },
+  { id: 'services',       label: 'Services' },
+  { id: 'work',           label: 'Portfolio' },
+  { id: 'certifications', label: 'Certs' },
+  { id: 'contact',        label: 'Contact' },
 ];
 
-const Navbar = ({ onOpenResume }) => {
+const Navbar = () => {
   const [active,     setActive]     = useState('home');
   const [scrolled,   setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -114,9 +117,14 @@ const Navbar = ({ onOpenResume }) => {
             )}
           </button>
 
-          <button className="navbar__resume-btn" onClick={onOpenResume}>
+          <a
+            href="/Rohit_Kumar.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="navbar__resume-btn"
+          >
             Resume ↗
-          </button>
+          </a>
           <AnchorLink className="navbar__cta" offset={70} href="#contact">
             <span className="navbar__cta-icon">✉</span>
             Hire Me
@@ -186,9 +194,15 @@ const Navbar = ({ onOpenResume }) => {
           <button className="mobile-menu__theme" onClick={toggle}>
             {theme === 'dark' ? '☀️ Switch to Light Mode' : '🌙 Switch to Dark Mode'}
           </button>
-          <button className="mobile-menu__resume" onClick={() => { onOpenResume(); setMobileOpen(false); }}>
+          <a
+            href="/Rohit_Kumar.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mobile-menu__resume"
+            onClick={() => setMobileOpen(false)}
+          >
             View Resume ↗
-          </button>
+          </a>
           <AnchorLink
             className="mobile-menu__cta"
             offset={70}

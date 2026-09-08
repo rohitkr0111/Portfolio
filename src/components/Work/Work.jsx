@@ -6,32 +6,32 @@ const PROJECT_META = [
   {
     name: 'Snakkr',
     desc: 'AI-driven lesson-to-quiz platform with persistent user progress tracking',
-    tags: ['HTML /CSS', 'JavaScript'],
+    tags: ['React', 'Gemini API', 'JavaScript', 'CSS'],
   },
   {
-    name: 'File Sharing System(CodeUrja)',
-    desc: 'Real-time chat for 100+ concurrent users with JWT auth & Redux',
-    tags: ['HTML /CSS', 'JavaScript'],
+    name: 'CodeUrja — File Sharing',
+    desc: 'Secure peer-to-peer file sharing platform with real-time transfer & JWT auth',
+    tags: ['React', 'Node.js', 'Express', 'JWT'],
   },
   {
     name: 'AI Blog Platform',
-    desc: 'Role-based MERN blogging platform with AI content generation',
+    desc: 'Role-based MERN blogging platform with AI content generation via Gemini API',
     tags: ['React', 'Node.js', 'MongoDB', 'Gemini API'],
   },
   {
     name: 'ChatApp',
-    desc: 'Full-stack social platform built with the MERN stack',
-    tags: ['React', 'MERN', 'Express', 'MongoDB', 'Socket.io', 'JWT', 'TailwindCSS'],
+    desc: 'Real-time full-stack chat app for 100+ concurrent users with Socket.io & JWT auth',
+    tags: ['React', 'Socket.io', 'MongoDB', 'JWT', 'TailwindCSS'],
   },
   {
-    name: 'Space Science (Kids Learning WebApp',
-    desc: 'Developer productivity platform with real-time collaboration',
+    name: 'Spacey Science',
+    desc: 'Interactive space-science learning web app for kids with AI-powered explanations',
     tags: ['React', 'TypeScript', 'Node.js', 'Gemini API'],
   },
   {
     name: 'Portfolio v2',
-    desc: 'Award-style personal portfolio with dark/light theme & 3D effects',
-    tags: ['React', 'CSS', 'Vite'],
+    desc: 'Award-style personal portfolio with dark/light theme, particle canvas & 3D effects',
+    tags: ['React', 'CSS', 'Vite', 'Framer Motion'],
   },
 ];
 
@@ -175,14 +175,14 @@ const Work = () => {
   }, []);
 
   return (
-    <section id="work" className="work" ref={sectionRef} data-num="03">
+    <section id="work" className="work" ref={sectionRef} data-num="05">
       <div className="work__bg-glow" aria-hidden="true" />
 
       <div className={`work__inner ${visible ? 'work__inner--visible' : ''}`}>
         <div className="section-title">
           <span className="section-pill">Portfolio</span>
-          <h2>My Latest Work</h2>
-          <p>A curated selection of projects that showcase my skills and creativity.</p>
+          <h2>Stuff I've Built</h2>
+          <p>Projects I actually cared about — some shipped, some still running in prod, one won a hackathon.</p>
         </div>
 
         <div className="work__grid">
@@ -199,7 +199,7 @@ const Work = () => {
 
         <div className="work__cta">
           <a
-            href="https://github.com/rohitkumarsingh0111"
+            href="https://github.com/rohitkr0111"
             target="_blank"
             rel="noopener noreferrer"
             className="work__more-btn"

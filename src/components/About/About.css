@@ -131,48 +131,51 @@
   font-weight: 600;
 }
 
-/* ===== SKILL BARS ===== */
-.about__skills {
+/* ===== CURRENTLY BLOCK ===== */
+.about__currently {
+  width: 100%;
+  padding: 20px 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  background: rgba(201, 169, 110, 0.03);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
-.about__skill-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.about__skill-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.about__skill-name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #e8d5b7;
-  font-family: 'Space Grotesk', sans-serif;
-}
-.about__skill-pct {
+
+.about__currently-title {
+  font-family: 'Space Grotesk', monospace;
   font-size: 0.78rem;
   font-weight: 700;
   color: #c9a96e;
-  font-family: 'Space Grotesk', sans-serif;
-  transition: color 0.5s ease;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin-bottom: 4px;
 }
-.about__skill-track {
-  width: 100%;
-  height: 5px;
-  background: rgba(201, 169, 110, 0.08);
-  border-radius: 3px;
-  overflow: hidden;
+
+.about__currently-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
-.about__skill-bar {
-  height: 100%;
-  border-radius: 3px;
-  width: 0%;
-  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+.about__currently-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
+
+.about__currently-text {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #a09070;
+}
+
+[data-theme="light"] .about__currently {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(160, 112, 64, 0.1);
+}
+[data-theme="light"] .about__currently-text { color: #6b5b45; }
 
 /* ===== RESUME BUTTON ===== */
 .about__resume-btn {
@@ -242,7 +245,261 @@
   text-transform: uppercase;
 }
 
+/* ===== GITHUB ACTIVITY ===== */
+.about__github {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__github-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e8d5b7;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+}
+
+.about__github-title svg {
+  color: #c9a96e;
+  flex-shrink: 0;
+}
+
+.about__github-graph-link {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  background: rgba(201, 169, 110, 0.02);
+  padding: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about__github-graph-link:hover {
+  border-color: rgba(201, 169, 110, 0.3);
+  box-shadow: 0 8px 30px rgba(201, 169, 110, 0.08);
+}
+
+.about__github-graph {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Invert white bg from the SVG so it looks dark */
+  filter: invert(1) hue-rotate(180deg) brightness(0.85);
+}
+
+.about__github-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.about__github-card-link {
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.1);
+  background: rgba(201, 169, 110, 0.02);
+  padding: 12px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.about__github-card-link:hover {
+  border-color: rgba(201, 169, 110, 0.28);
+  box-shadow: 0 8px 24px rgba(201, 169, 110, 0.08);
+  transform: translateY(-3px);
+}
+
+.about__github-stat-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Light theme overrides */
+[data-theme="light"] .about__github-graph-link {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(160, 112, 64, 0.12);
+}
+[data-theme="light"] .about__github-graph {
+  /* In light mode, don't invert — the SVG has natural light bg */
+  filter: none;
+}
+[data-theme="light"] .about__github-card-link {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(160, 112, 64, 0.1);
+}
+[data-theme="light"] .about__github-title { color: #1a1208; }
+
+/* ===== LEETCODE CARD ===== */
+.about__lc-card {
+  display: block;
+  border-radius: 16px;
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  background: rgba(201, 169, 110, 0.02);
+  padding: 24px 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+.about__lc-card:hover {
+  border-color: rgba(201, 169, 110, 0.3);
+  background: rgba(201, 169, 110, 0.05);
+  box-shadow: 0 8px 30px rgba(201, 169, 110, 0.08);
+  transform: translateY(-2px);
+}
+
+.about__lc-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Total number */
+.about__lc-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+.about__lc-total-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #c9a96e, #f5ead8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.about__lc-total-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #6b5b45;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Vertical divider */
+.about__lc-divider {
+  width: 1px;
+  height: 60px;
+  background: rgba(201, 169, 110, 0.15);
+  flex-shrink: 0;
+}
+
+/* Easy / Medium / Hard breakdown */
+.about__lc-breakdown {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.about__lc-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: var(--lc-bg);
+  border: 1px solid var(--lc-border);
+  min-width: 70px;
+  transition: transform 0.2s ease;
+}
+.about__lc-card:hover .about__lc-level { transform: translateY(-2px); }
+.about__lc-level-count {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--lc-color);
+  line-height: 1;
+}
+.about__lc-level-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--lc-color);
+  opacity: 0.7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.about__lc-verify {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #c9a96e;
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+/* Fallback */
+.about__lc-fallback {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.about__lc-fallback-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #c9a96e, #f5ead8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.about__lc-fallback-text {
+  font-size: 0.85rem;
+  color: #a09070;
+}
+
+/* Loading skeleton */
+.about__lc-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.about__lc-sk-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(201, 169, 110, 0.08);
+  animation: lc-shimmer 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.about__lc-sk-lines { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.about__lc-sk-line {
+  height: 14px;
+  border-radius: 7px;
+  background: rgba(201, 169, 110, 0.06);
+  animation: lc-shimmer 1.5s ease-in-out infinite;
+}
+.about__lc-sk-line--wide  { width: 60%; }
+.about__lc-sk-line--short { width: 35%; animation-delay: 0.2s; }
+
+@keyframes lc-shimmer {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.9; }
+}
+
+/* Light theme */
+[data-theme="light"] .about__lc-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(160, 112, 64, 0.12);
+}
+[data-theme="light"] .about__lc-card:hover {
+  background: #fff;
+  border-color: rgba(201, 169, 110, 0.35);
+}
+
 /* ===== RESPONSIVE ===== */
+
 @media (max-width: 1024px) {
   .about { padding: 80px 40px; }
   .about__grid { grid-template-columns: 1fr; gap: 48px; }
@@ -251,4 +508,5 @@
 @media (max-width: 600px) {
   .about { padding: 60px 24px; }
   .about__stats { grid-template-columns: 1fr; }
+  .about__github-cards { grid-template-columns: 1fr; }
 }

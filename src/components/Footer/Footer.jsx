@@ -3,16 +3,19 @@ import './Footer.css';
 
 const LINKS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rohitkumarsingh0111/' },
-  { label: 'GitHub', href: 'https://github.com/rohitkumarsingh0111' },
+  { label: 'GitHub', href: 'https://github.com/rohitkr0111' },
   { label: 'Resume', href: '/Rohit_Kumar.pdf' },
 ];
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#work' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home',         href: '#home' },
+  { label: 'About',        href: '#about' },
+  { label: 'Experience',   href: '#experience' },
+  { label: 'Skills',       href: '#skills' },
+  { label: 'Services',     href: '#services' },
+  { label: 'Portfolio',    href: '#work' },
+  { label: 'Certs',        href: '#certifications' },
+  { label: 'Contact',      href: '#contact' },
 ];
 
 const Footer = () => {
@@ -27,7 +30,7 @@ const Footer = () => {
         <div className="footer__brand">
           <img src={logopic} alt="Rohit Kumar" className="footer__logo" />
           <p className="footer__brand-text">
-            Building fast, scalable, and beautiful web experiences.
+            MERN dev from Bhopal. Building things, breaking things, learning stuff.
           </p>
           <div className="footer__socials">
             {LINKS.map(({ label, href }) => (

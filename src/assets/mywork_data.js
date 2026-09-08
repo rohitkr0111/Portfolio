@@ -40,7 +40,7 @@ const mywork_data = [
         w_no:6,
         w_name:"Web design",
         w_img:project6_img,
-        w_link:"https://example.com/project6"
+        w_link:"https://github.com/rohitkr0111"
     },
 ]
 

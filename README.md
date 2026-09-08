@@ -1,113 +1,153 @@
-# Portfolio
+# Rohit Kumar — Developer Portfolio
 
-A modern personal portfolio website built with **React + Vite**.
+A modern, responsive developer portfolio built with **React 19 and Vite** to showcase my projects, technical skills, experience, services, and contact information.
 
-## Overview
+The portfolio focuses on a clean user experience, interactive animations, responsive layouts, persistent theme preferences, and reusable React components.
 
-This project is a single-page portfolio for Rohit Kumar.  
-It highlights profile details, services, projects, and contact information with animated UI effects and theme switching.
+🌐 **Live Portfolio:** https://rohitkumar7004.netlify.app/
 
-## Tech Stack
+---
 
-- **Frontend:** React 19
-- **Build Tool:** Vite 6
-- **Styling:** CSS modules/files + Tailwind dependency available
-- **Animation/Interaction:** Framer Motion (dependency), custom CSS/JS effects
-- **Navigation:** `react-anchor-link-smooth-scroll`
-- **Form Backend:** Web3Forms API (contact form submission)
+## ✨ Highlights
 
-## Key Features
+* Responsive single-page portfolio for desktop, tablet, and mobile
+* Dark/light theme with `localStorage` persistence
+* Animated hero section with typewriter effect and particle background
+* Interactive skills marquee and animated statistics
+* Data-driven services and project sections
+* Interactive project cards with tilt and glare effects
+* Functional contact form powered by Web3Forms
+* Resume preview, download, and new-tab viewing
+* Scroll progress indicator
+* Custom cursor for desktop devices
+* Toast-based form submission feedback
+* Reusable component-based architecture
 
-- Responsive single-page layout
-- Dark/light theme toggle with persistence (`localStorage`)
-- Interactive hero section:
-  - typewriter role text
-  - animated particles canvas
-  - floating skill bubbles
-- About section with:
-  - animated skill bars
-  - count-up stats
-- Services section from data-driven card list
-- Portfolio/work showcase with:
-  - project metadata
-  - tilt + glare card interaction
-  - external live links
-- Contact section with:
-  - details/social links
-  - working form submission + success/error toast
-- Resume modal with inline PDF preview, download, and new-tab actions
-- Custom cursor and top scroll progress indicator
-- Global grain overlay visual effect
+---
 
-## Project Structure
+## 🛠️ Tech Stack
+
+| Category      | Technologies                    |
+| ------------- | ------------------------------- |
+| Frontend      | React 19, JavaScript            |
+| Build Tool    | Vite 6                          |
+| Styling       | CSS, Tailwind CSS               |
+| Animation     | Framer Motion, CSS animations   |
+| Navigation    | React Anchor Link Smooth Scroll |
+| Form Handling | Web3Forms API                   |
+| State / Theme | React Context API, localStorage |
+| Development   | ESLint, npm                     |
+
+---
+
+## 🏗️ Project Structure
 
 ```text
 src/
-├── main.jsx                     # React entry, wraps App with ThemeProvider
-├── App.jsx                      # Main page composition and modal state
+├── assets/
+│   ├── mywork_data.js
+│   └── services_data.js
+│
+├── components/
+│   ├── navbar/
+│   ├── Hero/
+│   ├── Marquee/
+│   ├── About/
+│   ├── Services/
+│   ├── Work/
+│   ├── Contact/
+│   ├── ResumeModal/
+│   ├── ScrollProgress/
+│   ├── CustomCursor/
+│   ├── GrainOverlay/
+│   ├── Footer/
+│   └── Loader.jsx
+│
+├── context/
+│   └── ThemeContext.jsx
+│
+├── App.jsx
 ├── App.css
 ├── index.css
-├── theme.css                    # Theme token styles
-├── assets/
-│   ├── mywork_data.js           # Portfolio cards data
-│   └── services_data.js         # Services list data
-├── context/
-│   └── ThemeContext.jsx         # Theme context and toggle logic
-└── components/
-    ├── navbar/                  # Desktop/mobile navbar + section highlighting
-    ├── Hero/                    # Hero UI, canvas particles, typewriter effect
-    ├── Marquee/                 # Infinite skills marquee
-    ├── About/                   # Bio, skills, and animated stats
-    ├── Services/                # Services cards from assets data
-    ├── Work/                    # Project gallery with interactive cards
-    ├── Contact/                 # Contact form + Web3Forms submission
-    ├── ResumeModal/             # PDF resume modal viewer
-    ├── ScrollProgress/          # Page scroll progress bar
-    ├── CustomCursor/            # Enhanced cursor for non-touch devices
-    ├── GrainOverlay/            # Full-screen grain texture effect
-    ├── Footer/                  # Footer links and contact snippet
-    └── Loader.jsx               # Optional loading component (currently unused)
+├── theme.css
+└── main.jsx
 ```
 
-## Component Flow
+The application follows a component-based structure to keep individual sections isolated, reusable, and easier to maintain.
 
-1. `main.jsx` mounts the app and injects `ThemeProvider`.
-2. `App.jsx` renders all page sections in order and controls `ResumeModal` open/close state.
-3. `navbar` links to section IDs (`home`, `about`, `services`, `work`, `contact`) and updates active item by intersection observer.
-4. `ThemeContext` applies `data-theme` to `<html>` and stores selected theme in `localStorage` key `rk-theme`.
+---
 
-## Data-Driven Sections
+## 🔧 Technical Implementation
 
-- `src/assets/services_data.js` controls service cards content.
-- `src/assets/mywork_data.js` controls project image/link listing.
-- `src/components/Work/Work.jsx` adds additional project metadata (`PROJECT_META`) like description/tags.
+### Theme Management
 
-## Contact Form Details
+The portfolio uses React Context to manage the selected theme.
 
-- Submits `FormData` to `https://api.web3forms.com/submit`
-- Includes `access_key` and message fields
-- Shows success/error toast and submit loading state
+Theme preferences are persisted using `localStorage`, allowing the selected theme to remain active across page reloads.
 
-## Getting Started
+### Data-Driven Content
+
+Project and service information is separated from UI components:
+
+* `mywork_data.js` → project information
+* `services_data.js` → service information
+
+This makes portfolio content easier to update without modifying the component structure.
+
+### Interactive UI
+
+The interface includes several custom interactions:
+
+* Animated particle background
+* Typewriter role animation
+* Skills marquee
+* Project card tilt/glare effects
+* Scroll progress indicator
+* Custom cursor
+* Grain overlay
+* Animated counters
+* Responsive navigation
+
+### Contact Form
+
+The contact form submits user messages through the **Web3Forms API** and provides loading, success, and error feedback.
+
+### Resume Integration
+
+The resume is integrated directly into the application through a modal interface supporting:
+
+* Inline PDF preview
+* Download
+* Opening the resume in a new tab
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (recommended latest LTS)
-- npm
+* Node.js
+* npm
 
 ### Installation
 
 ```bash
+git clone https://github.com/rohitkr0111/Portfolio.git
+
+cd Portfolio
+
 npm install
 ```
 
-### Run Development Server
+### Development
 
 ```bash
 npm run dev
 ```
 
-### Build for Production
+The application will be available on the local development server.
+
+### Production Build
 
 ```bash
 npm run build
@@ -125,8 +165,37 @@ npm run preview
 npm run lint
 ```
 
-## Notes
+---
 
-- Resume file expected at: `public/Rohit_Kumar.pdf`
-- Theme defaults to `dark` on first load
-- Some assets and profile content are personalized for the portfolio owner
+## 📌 Why I Built This
+
+I built this portfolio as a central place to present my software development work while also experimenting with modern frontend techniques such as component-driven architecture, animation, responsive design, theme management, and API-based form handling.
+
+The project also serves as a practical example of how I approach building polished frontend experiences rather than relying only on static layouts.
+
+---
+
+## 👨‍💻 About Me
+
+I'm **Rohit Kumar**, a Computer Science undergraduate and Full Stack Developer interested in building scalable web applications and AI-powered products.
+
+My primary interests include:
+
+* Full Stack Development
+* React & TypeScript
+* Node.js & REST APIs
+* MongoDB
+* Next.js
+* AI/LLM Applications
+* Developer Tools
+
+---
+
+## 📫 Connect
+
+* **Portfolio:** https://rohitkumar7004.netlify.app/
+* **GitHub:** https://github.com/rohitkr0111
+
+---
+
+⭐ If you find this project useful or interesting, feel free to explore the repository.

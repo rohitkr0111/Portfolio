@@ -3,38 +3,66 @@ import profile_img from '../../assets/prop124.png';
 import './About.css';
 
 const LEETCODE_USERNAME = 'rohitsinghrajput0111';
+const LC_CACHE_KEY = 'lc_stats_v1';
 
-/* ── Fetch LeetCode stats from public API proxy ── */
 const useLeetCode = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const cached = (() => { try { return JSON.parse(sessionStorage.getItem(LC_CACHE_KEY)); } catch { return null; } })();
+
+  const [data,    setData]    = useState(cached ?? null);
+  const [loading, setLoading] = useState(!cached); /* skip loading if cache hit */
 
   useEffect(() => {
-    fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USERNAME}/solved`)
+    if (cached) return; /* already have data — no fetch needed */
+    const ctrl = new AbortController();
+    const tid  = setTimeout(() => ctrl.abort(), 8000);
+
+    fetch(`https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USERNAME}`, { signal: ctrl.signal })
       .then(r => r.json())
-      .then(json => {
-        setData({
-          total:  json.solvedProblem  ?? 0,
-          easy:   json.easySolved     ?? 0,
-          medium: json.mediumSolved   ?? 0,
-          hard:   json.hardSolved     ?? 0,
-        });
+      .then(j => {
+        const fresh = {
+          total:  j.totalSolved  ?? 532,
+          easy:   j.easySolved   ?? 156,
+          medium: j.mediumSolved ?? 266,
+          hard:   j.hardSolved   ?? 110,
+        };
+        setData(fresh);
+        try { sessionStorage.setItem(LC_CACHE_KEY, JSON.stringify(fresh)); } catch {}
       })
-      .catch(() => setData(null))
-      .finally(() => setLoading(false));
-  }, []);
+      .catch(() => {
+        /* API failed — show accurate static fallback */
+        setData({ total: 532, easy: 156, medium: 266, hard: 110 });
+      })
+      .finally(() => { clearTimeout(tid); setLoading(false); });
+
+    return () => { clearTimeout(tid); ctrl.abort(); };
+  }, []); // eslint-disable-line
 
   return { data, loading };
 };
 
+const LEVELS = [
+  { label: 'Easy',   key: 'easy',   color: '#68d391', bg: 'rgba(104,211,145,0.08)', border: 'rgba(104,211,145,0.25)' },
+  { label: 'Medium', key: 'medium', color: '#f6ad55', bg: 'rgba(246,173,85,0.08)',  border: 'rgba(246,173,85,0.25)'  },
+  { label: 'Hard',   key: 'hard',   color: '#fc8181', bg: 'rgba(252,129,129,0.08)', border: 'rgba(252,129,129,0.25)' },
+];
+
+/* ── Skeleton shown only on first-ever visit while API fetches ── */
+const LCSkeleton = () => (
+  <div className="about__lc-skeleton-card">
+    {/* Big number placeholder */}
+    <div className="about__lc-sk-total" />
+    <div className="about__lc-sk-divider" />
+    {/* Three pill placeholders */}
+    <div className="about__lc-sk-pills">
+      <div className="about__lc-sk-pill" />
+      <div className="about__lc-sk-pill" />
+      <div className="about__lc-sk-pill" />
+    </div>
+  </div>
+);
+
 const LeetCodeStats = () => {
   const { data, loading } = useLeetCode();
-
-  const LEVELS = [
-    { label: 'Easy',   key: 'easy',   color: '#68d391', bg: 'rgba(104,211,145,0.08)', border: 'rgba(104,211,145,0.25)' },
-    { label: 'Medium', key: 'medium', color: '#f6ad55', bg: 'rgba(246,173,85,0.08)',  border: 'rgba(246,173,85,0.25)'  },
-    { label: 'Hard',   key: 'hard',   color: '#fc8181', bg: 'rgba(252,129,129,0.08)', border: 'rgba(252,129,129,0.25)' },
-  ];
 
   return (
     <div className="about__github">
@@ -45,65 +73,36 @@ const LeetCodeStats = () => {
         LeetCode Stats
       </h3>
 
-      <a
-        href={`https://leetcode.com/u/${LEETCODE_USERNAME}/`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="about__lc-card"
-      >
-        {loading ? (
-          /* Loading skeleton */
-          <div className="about__lc-skeleton">
-            <div className="about__lc-sk-circle" />
-            <div className="about__lc-sk-lines">
-              <div className="about__lc-sk-line about__lc-sk-line--wide" />
-              <div className="about__lc-sk-line about__lc-sk-line--short" />
-            </div>
-          </div>
-        ) : data ? (
+      {loading ? <LCSkeleton /> : (
+        <a href={`https://leetcode.com/u/${LEETCODE_USERNAME}/`} target="_blank" rel="noopener noreferrer" className="about__lc-card">
           <div className="about__lc-content">
-            {/* Total solved big number */}
-            <div className="about__lc-total">
-              <span className="about__lc-total-num">{data.total}</span>
-              <span className="about__lc-total-label">Solved</span>
+            <div className="about__lc-top-row">
+              <div className="about__lc-total">
+                <span className="about__lc-total-num">{data.total}</span>
+                <span className="about__lc-total-label">Solved</span>
+              </div>
+              <div className="about__lc-divider" />
+              <div className="about__lc-breakdown">
+                {LEVELS.map(({ label, key, color, bg, border }) => (
+                  <div key={key} className="about__lc-level" style={{ '--lc-color': color, '--lc-bg': bg, '--lc-border': border }}>
+                    <span className="about__lc-level-count">{data[key]}</span>
+                    <span className="about__lc-level-label">{label}</span>
+                  </div>
+                ))}
+              </div>
+              <span className="about__lc-verify">View Profile ↗</span>
             </div>
-
-            {/* Divider */}
-            <div className="about__lc-divider" />
-
-            {/* Easy / Medium / Hard breakdown */}
-            <div className="about__lc-breakdown">
-              {LEVELS.map(({ label, key, color, bg, border }) => (
-                <div
-                  key={key}
-                  className="about__lc-level"
-                  style={{ '--lc-color': color, '--lc-bg': bg, '--lc-border': border }}
-                >
-                  <span className="about__lc-level-count">{data[key]}</span>
-                  <span className="about__lc-level-label">{label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Verify link */}
-            <span className="about__lc-verify">View Profile ↗</span>
           </div>
-        ) : (
-          /* Fallback if API is down */
-          <div className="about__lc-fallback">
-            <span className="about__lc-fallback-num">400+</span>
-            <span className="about__lc-fallback-text">Problems Solved · View on LeetCode ↗</span>
-          </div>
-        )}
-      </a>
+        </a>
+      )}
     </div>
   );
 };
 
 const STATS = [
-  { value: 15, suffix: '+', label: 'Projects Shipped' },
-  { value: 400, suffix: '+', label: 'DSA on LeetCode' },
-  { value: 5,  suffix: '+', label: 'Hackathon Finals' },
+  { value: 15,  suffix: '+', label: 'Projects Shipped' },
+  { value: 530, suffix: '+', label: 'DSA on LeetCode' },
+  { value: 5,   suffix: '+', label: 'Hackathon Finals' },
 ];
 
 const useCountUp = (target, started) => {

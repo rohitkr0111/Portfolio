@@ -460,11 +460,52 @@
 }
 
 /* Loading skeleton */
-.about__lc-skeleton {
+.about__lc-skeleton-card {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(201, 169, 110, 0.08);
+  background: rgba(201, 169, 110, 0.02);
 }
+/* Big number placeholder */
+.about__lc-sk-total {
+  width: 80px;
+  height: 70px;
+  border-radius: 12px;
+  background: rgba(201, 169, 110, 0.08);
+  animation: lc-shimmer 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+/* Divider placeholder */
+.about__lc-sk-divider {
+  width: 1px;
+  height: 60px;
+  background: rgba(201, 169, 110, 0.06);
+  flex-shrink: 0;
+}
+/* Pills row */
+.about__lc-sk-pills {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+.about__lc-sk-pill {
+  flex: 1;
+  height: 58px;
+  border-radius: 12px;
+  background: rgba(201, 169, 110, 0.07);
+  animation: lc-shimmer 1.4s ease-in-out infinite;
+}
+.about__lc-sk-pill:nth-child(2) { animation-delay: 0.15s; }
+.about__lc-sk-pill:nth-child(3) { animation-delay: 0.30s; }
+
+@keyframes lc-shimmer {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.85; }
+}
+
 .about__lc-sk-circle {
   width: 64px;
   height: 64px;

@@ -1,48 +1,56 @@
-/* =====================================================
-   certificates_data.js
-   ── Add your certificates here. Each entry = one card.
-   ── Replace the placeholder values with your real ones.
-   ===================================================== */
+import certGenAI   from './Certificate- GEN AI.jpg';
+import certPowerBI from './Certificate- Power BI.jpg';
+import certSQL     from './Certificate- SQL.jpg';
+import certHCL     from './HCL GUVI Certification - P7p556Jo98g81qh728.png';
 
 /*
-  HOW TO ADD A CERTIFICATE:
-  1. Import your certificate image at the top (optional)
-     e.g.  import cert1 from './cert1.png';
-  2. Duplicate one of the objects below
-  3. Fill in title, issuer, date, link (verification URL), tags
-  4. Set image: cert1  (or keep null for initials placeholder)
+  HOW TO ADD MORE CERTIFICATES:
+  1. Drop the image file into src/assets/
+  2. Import it above (follow the same pattern)
+  3. Duplicate an object below and fill in the fields
+  4. Set  image: <your imported variable>
 */
 
 const certificates_data = [
   {
     id: 1,
-    title: 'Your Certificate Title Here',
-    issuer: 'Issuing Organization',
-    date: 'Month Year',
-    image: null,            // ← Replace with imported image, e.g. cert1
-    link: '#',              // ← Paste certificate verification URL here
-    tags: ['Skill', 'Technology'],
-    color: '#c9a96e',
+    title: 'Generative AI',
+    issuer: 'LinkedIn Learning',
+    date: '2026',
+    image: certGenAI,
+    link: '#',
+    tags: ['AI', 'LLM', 'Gemini'],
+    color: '#68d391',
   },
   {
     id: 2,
-    title: 'Another Certificate',
-    issuer: 'Another Organization',
-    date: 'Month Year',
-    image: null,
+    title: 'Power BI',
+    issuer: 'LinkedIn Learning',
+    date: '2026',
+    image: certPowerBI,
     link: '#',
-    tags: ['Web Dev', 'Frontend'],
-    color: '#e8d5b7',
+    tags: ['Data Visualisation', 'BI', 'Analytics'],
+    color: '#f6ad55',
   },
   {
     id: 3,
-    title: 'Third Certificate',
-    issuer: 'Platform Name',
-    date: 'Month Year',
-    image: null,
+    title: 'SQL',
+    issuer: 'LinkedIn Learning',
+    date: '2026',
+    image: certSQL,
     link: '#',
-    tags: ['DSA', 'Problem Solving'],
-    color: '#b8935a',
+    tags: ['SQL', 'Databases', 'Queries'],
+    color: '#63b3ed',
+  },
+  {
+    id: 4,
+    title: 'HCL GUVI Certification',
+    issuer: 'HCL × GUVI',
+    date: '2025',
+    image: certHCL,
+    link: '#',
+    tags: ['Full-Stack', 'HCL', 'GUVI'],
+    color: '#c9a96e',
   },
 ];
 
